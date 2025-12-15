@@ -1,0 +1,241 @@
+@import url("../styles/roots.css");
+
+.main-container {
+  padding: 0 30px;
+  width: 100%;
+}
+.main-container .greetings h1 {
+  font-size: 36px;
+  line-height: 44px;
+  margin-bottom: 12px;
+}
+.main-container .greetings {
+  margin: 42px 0;
+}
+.main-container .greetings p {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+.stats-cards-container {
+  width: 100%;
+  margin-bottom: 62px;
+}
+.stats-card {
+  border-radius: 12px;
+  padding: 24px;
+  background: linear-gradient(
+    117.58deg,
+    rgba(215, 237, 237, 0.16) -47.79%,
+    rgba(204, 235, 235, 0) 100%
+  );
+  border-top: 1px solid #ffffff14;
+  margin-top: 24px;
+}
+.stats-card p {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: var(--text-primary);
+}
+.stat-quantity {
+  margin-bottom: 24px;
+}
+.stat-quantity p {
+  font-size: 32px;
+  line-height: 40px;
+}
+.appointments-table {
+  width: 100%;
+border: 1px solid #1A1D21;
+  border-radius: 25px;
+}
+.table-overflow thead tr{
+    border-radius: 25px;
+}
+.table-overflow {
+  width: 100%;
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+  display: block;
+  /* Ensure the table can scroll */
+}
+.table-overflow thead tr,
+.table-overflow tbody {
+  width: 100%;
+}
+.table-overflow th,
+.table-overflow td {
+  text-align: left;
+  width: auto;
+}
+.table-overflow thead tr th {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}
+.table-overflow tbody tr,
+.table-overflow thead tr {
+  display: grid;
+}
+
+
+
+
+
+
+tr:nth-child(even) {
+    background-color: #1C2023;
+}
+.table-overflow tbody td {
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 18px;
+  padding-right: 24px;
+  padding-bottom: 18px;
+  padding-left: 24px;
+}
+.table-overflow thead {
+  border-radius: 8px;
+  padding-top: 18px;
+  padding-right: 24px;
+  padding-bottom: 18px;
+  padding-left: 24px;
+  background-color: var(--carepulse-black);
+}
+.table-overflow thead th {
+  /* border-radius: 8px; */
+  padding-top: 18px;
+  padding-right: 24px;
+  padding-bottom: 18px;
+  padding-left: 24px;
+  background-color: var(--carepulse-black);
+  color: #cdcecf;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: left;
+  width: auto;
+}
+.grid-columns-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.table-overflow tbody .patient {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 14px;
+  line-height: 20px;
+  color: #e8e9e9;
+}
+.table-overflow tbody .name {
+  color: #e8e9e9;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.table-overflow tbody .doctor {
+  color: #e8e9e9;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 14px;
+  line-height: 20px;
+}
+.table-overflow .status-pill {
+  border-radius: 16px;
+  padding-top: 2px;
+  padding-right: 8px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+}
+.scheduled {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 12px;
+  line-height: 18px;
+  background: #0d2a1f;
+  color: #24ae7c;
+}
+.pending {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 12px;
+  line-height: 18px;
+  background: #152432;
+  color: #79b5ec;
+}
+.cancelled {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 12px;
+  line-height: 18px;
+  background: #3e1716;
+  color: #f37877;
+}
+.action-btn {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.Schedule-btn {
+  color: #24ae7c;
+}
+.Cancel-btn {
+  color: #fbecec;
+}
+.initials-wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f2f4f7;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #475467;
+}
+.doctor-image-container {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.pagination{
+    padding-top: 18px;
+        padding-right: 24px;
+        padding-bottom: 18px;
+        padding-left: 24px;
+}
+
+.pagination button{
+        cursor: pointer;
+        border-radius: 8px;
+        padding: 8px;
+        border: 1px solid #1A1D21;
+        background-color: #1C2023;
+}
+.pagination button img{
+        height: 15px;
+        width: 15px;
+}
+
+.avatar-wrapper{
+    width: 32px;
+        height: 32px;
+        border-radius: 50%;
+}
+
+
+@media (min-width:820px) {
+.main-container{
+    padding: 0 68px;
+}
+}

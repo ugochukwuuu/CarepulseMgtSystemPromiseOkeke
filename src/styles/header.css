@@ -1,0 +1,19 @@
+@import url("../styles/roots.css");
+
+nav {
+  background-color: var(--carepulse-black);
+  border-radius: 8px;
+  padding: 24px 48px;
+}
+nav p {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: var(--text-primary);
+}
+nav img {
+  width: 32px;
+  height: 32px;
+}

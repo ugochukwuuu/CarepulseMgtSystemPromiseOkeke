@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  /* Primary Brand Colors */
+  --carepulse-primary: #1a73e8;
+  --carepulse-secondary: #34a853;
+  --carepulse-accent: #ea4335;
+
+  /* Neutral / UI Colors */
+  --carepulse-black: #131619;
+  --carepulse-dark: #202124;
+  --carepulse-gray-dark: #5f6368;
+  --carepulse-gray-medium: #dadce0;
+  --carepulse-gray-light: #f8f9fa;
+  --carepulse-white: #ffffff;
+
+  /* Status Colors */
+  --status-submitted: #34a853;
+  --status-pending: #f9ab00;
+  --status-cancelled: #ea4335;
+
+  /* Interactive States */
+  --hover-primary: #0d62d9;
+  --hover-secondary: #2e8b47;
+  --hover-accent: #d33426;
+  --disabled-gray: #9aa0a6;
+
+  /* Backgrounds & Surfaces */
+  --bg-page: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #5f6368;
+  --text-light: #80868b;
+  --text-on-primary: #ffffff;
+}
