@@ -7,8 +7,8 @@ I've used extra dependencies which I felt added more usability to the project,
 
 I also used gemini as well deepseek to get an accurate color pallete of the project
 
-To run this project, you'd have to use first clone it using git clone
-=> then when on your system, install all dependencies using npm install
+To run this project, you'd have to use first clone it using 'git clone https://github.com/ugochukwuuu/CarepulseMgtSystemPromiseOkeke.git'
+=> then when on your system, install all dependencies using 'npm install'
 => then use 'npm run dev' to get a local development server
 
 That's all.
