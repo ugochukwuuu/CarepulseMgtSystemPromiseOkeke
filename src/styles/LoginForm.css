@@ -89,7 +89,8 @@ form {
   outline: none;
   transition: all 0.3s ease;
 }
-.input-container select,.input-container textarea,
+.input-container select,
+.input-container textarea,
 .input-container .special {
   width: 100%;
   background: #1f2937;

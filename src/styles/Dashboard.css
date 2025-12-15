@@ -52,21 +52,21 @@
   line-height: 40px;
 }
 .appointments-table-wrapper {
-    width: 100%;
-    overflow-x: auto;
+  width: 100%;
+  overflow-x: auto;
 }
 .appointments-table {
   min-width: 900px;
-border: 1px solid #1A1D21;
+  border: 1px solid #1a1d21;
   border-radius: 15px;
   overflow: hidden;
 }
 
 .table-overflow {
   width: 100%;
-table-layout: fixed;
-    border-collapse: separate;
-    border-spacing: 0;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 .table-overflow thead tr,
 .table-overflow tbody {
@@ -87,13 +87,8 @@ table-layout: fixed;
   display: grid;
 }
 
-
-
-
-
-
 tr:nth-child(even) {
-    background-color: #1C2023;
+  background-color: #1c2023;
 }
 .table-overflow tbody td {
   text-align: left;
@@ -151,7 +146,7 @@ tr:nth-child(even) {
   line-height: 20px;
 }
 .table-overflow .status-pill {
-    display: inline-block;
+  display: inline-block;
   border-radius: 16px;
   padding-top: 2px;
   padding-right: 8px;
@@ -195,7 +190,7 @@ tr:nth-child(even) {
   color: #fbecec;
 }
 .Remove-btn {
-  color: #F37877;
+  color: #f37877;
 }
 .initials-wrapper {
   width: 32px;
@@ -214,38 +209,37 @@ tr:nth-child(even) {
   height: 32px;
   border-radius: 50%;
 }
-.pagination{
-    padding-top: 18px;
-        padding-right: 24px;
-        padding-bottom: 18px;
-        padding-left: 24px;
+.pagination {
+  padding-top: 18px;
+  padding-right: 24px;
+  padding-bottom: 18px;
+  padding-left: 24px;
 }
 
-.pagination button{
-        cursor: pointer;
-        border-radius: 8px;
-        padding: 8px;
-        border: 1px solid #1A1D21;
-        background-color: #1C2023;
-        color: #24AE7C;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 20px;
+.pagination button {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px;
+  border: 1px solid #1a1d21;
+  background-color: #1c2023;
+  color: #24ae7c;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 }
-.pagination button img{
-        height: 15px;
-        width: 15px;
-}
-
-.avatar-wrapper{
-    width: 32px;
-        height: 32px;
-        border-radius: 50%;
+.pagination button img {
+  height: 15px;
+  width: 15px;
 }
 
+.avatar-wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
 
-@media (min-width:820px) {
-.main-container{
+@media (min-width: 820px) {
+  .main-container {
     padding: 0 68px;
-}
+  }
 }

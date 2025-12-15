@@ -58,7 +58,11 @@ const LoginPage = () => {
             <label className="label " htmlFor="fullName">
               Full Name
               <div className="input-container rainbow-input">
-                <img className="img" src="src/assets/nameIcon.png" alt="full name" />
+                <img
+                  className="img"
+                  src="src/assets/nameIcon.png"
+                  alt="full name"
+                />
                 <input
                   value={formData.fullName}
                   onChange={handleChange}
@@ -72,7 +76,11 @@ const LoginPage = () => {
             <label className="label " htmlFor="email">
               Email
               <div className="input-container">
-                <img className="img" src="src/assets/emailIcon.png" alt="email" />
+                <img
+                  className="img"
+                  src="src/assets/emailIcon.png"
+                  alt="email"
+                />
                 <input
                   value={formData.email}
                   onChange={handleChange}
@@ -87,7 +95,11 @@ const LoginPage = () => {
             <label className="label " htmlFor="phoneNumber">
               Phone Number
               <div className="input-container">
-                <img className="img" src="src/assets/phoneIcon.png" alt="Phone Number" />
+                <img
+                  className="img"
+                  src="src/assets/phoneIcon.png"
+                  alt="Phone Number"
+                />
                 <input
                   value={formData.phoneNumber}
                   onChange={handleChange}

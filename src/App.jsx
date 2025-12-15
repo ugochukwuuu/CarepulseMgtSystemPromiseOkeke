@@ -8,20 +8,19 @@ import "./styles/App.css";
 function App() {
   return (
     <>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/success" element={<Success />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/success" element={<Success />} />
+        </Routes>
+      </BrowserRouter>
 
-    <Toaster 
-        position="top-right" // Position where toasts will appear
-        reverseOrder={false} 
+      <Toaster
+        position="top-right" 
+        reverseOrder={false}
       />
-</>
-
+    </>
   );
 }
 
