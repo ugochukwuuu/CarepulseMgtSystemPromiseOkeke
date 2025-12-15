@@ -1,6 +1,9 @@
 import Header from "../components/header";
 import ScheduleAppointmentModal from "../components/scheduleAppointmentModal";
+import CancelAppointmentModal from "../components/cancelAppointmentModal";
+import TodoModal from "../components/TodoModal";
 import "../styles/Dashboard.css";
+import toast from 'react-hot-toast';
 import AlexRamirez from "../assets/AlexRamirez.png";
 import JasmineLee from "../assets/JasmineLee.png";
 import HardikSharma from "../assets/HardikSharma.png";
@@ -15,6 +18,7 @@ const Dashboard = () => {
       date: "Jan 4, 2022",
       status: "Scheduled",
       doctor: "Dr. Alex Ramirez",
+      doctorId: 1,
       doctorImgUrl: AlexRamirez,
       actions: ["Schedule", "Cancel"],
     },
@@ -25,6 +29,7 @@ const Dashboard = () => {
       date: "Jan 2, 2022",
       status: "Pending",
       doctor: "Dr. Michael May",
+      doctorId: 5,
       doctorImgUrl: null,
       actions: ["Schedule", "Cancel"],
     },
@@ -35,6 +40,7 @@ const Dashboard = () => {
       date: "Jan 4, 2022",
       status: "Cancelled",
       doctor: "Dr. Jasmine Lee",
+      doctorId: 3,
       doctorImgUrl: JasmineLee,
       actions: ["Schedule", "Cancel"],
     },
@@ -45,6 +51,7 @@ const Dashboard = () => {
       date: "Jan 8, 2022",
       status: "Scheduled",
       doctor: "Dr. Hardik Sharma",
+      doctorId: 2,
       doctorImgUrl: HardikSharma,
       actions: ["Schedule", "Cancel"],
     },
@@ -55,36 +62,52 @@ const Dashboard = () => {
       date: "Jan 6, 2022",
       status: "Pending",
       doctor: "Dr. Alyana Cruz",
+      doctorId: 4,
       doctorImgUrl: AlyanaCruz,
       actions: ["Schedule", "Cancel"],
     },
   ]);
 
+  const [scheduleIsOpen, setScheduleIsOpen] = useState(false)
+  const [cancelIsOpen, setCancelIsOpen] = useState(false)
+  const [todoIsOpen, setTodoIsOpen] = useState(false)
+  const [appointmentDetails, setAppointmentDetails] = useState(null)
+  const closeScheduleModal = () =>{
+    setScheduleIsOpen(false)
+    setAppointmentDetails(null)
+  }
+  const closeCancelModal = () =>{
+    setCancelIsOpen(false) 
+  }
+  const closeTodoModal = () =>{
+    setTodoIsOpen(false) 
+  }
   const getQuantity = (category) => {
     return appointments.filter(
       (item) => item.status.toLowerCase() === category.toLowerCase(),
     ).length;
   };
 
+
   const statistics = [
     {
       category: "scheduled",
-    //   quantity: getQuantity("scheduled"),
-      quantity: 94,
+      quantity: getQuantity("scheduled"),
+    //   quantity: 94,
       text: "Total number of scheduled appointments",
       imgSrc: "src/assets/calendarIcon.png",
     },
     {
       category: "pending",
-    //   quantity: getQuantity("pending"),
-      quantity: 32,
+      quantity: getQuantity("pending"),
+    //   quantity: 32,
       text: "Total number of pending appointments",
       imgSrc: "src/assets/hourGlassIcon.png",
     },
     {
       category: "cancelled",
-      quantity: 56,
-    //   quantity: getQuantity("cancelled"),
+    //   quantity: 56,
+      quantity: getQuantity("cancelled"),
       text: "Total number of cancelled appointments",
       imgSrc: "src/assets/cancellIcon.png",
     },
@@ -110,6 +133,78 @@ const Dashboard = () => {
     const randomColors = ["#B6F09C", "#B6F09C", "#D59CF0"];
     return randomColors[Math.floor(Math.random() * randomColors.length)];
   };
+
+  const commitAction = (action,id)=>{
+    if(action.toLowerCase() === 'schedule'){
+        console.log('appointment is', appointments[id])
+        if(appointments[id].status.toLowerCase() === 'scheduled'){
+            toast.error('Apppointment is already scheduled')
+            return
+        }
+        if(appointments[id].status.toLowerCase() === 'cancelled'){
+            toast.error('Apppointment is cancelled')
+            return
+        }
+        else{
+            setScheduleIsOpen(true)
+            setAppointmentDetails(appointments[id])
+        }
+    }
+    if(action.toLowerCase() === 'cancel'){
+        console.log('appointment is', appointments[id])
+        if(appointments[id].status.toLowerCase() === 'scheduled'){
+            toast.error('Apppointment is already scheduled')
+            return
+        }
+        if(appointments[id].status.toLowerCase() === 'cancelled'){
+            toast.error('Apppointment is cancelled')
+            return
+        }
+        else{
+            setAppointmentDetails(appointments[id])
+            setCancelIsOpen(true)
+        }
+    }
+    if(action.toLowerCase() === 'remove'){
+        const removedAppointment = appointments.filter(app => app.id !== id + 1)
+        setAppointments(removedAppointment)
+        toast.success('Dynamically added appointment has been removed')
+    }
+  }
+
+  const cancelAppointment = (id) =>{
+    const appointment = appointments.find(app => app.id === id)
+    appointment.status = 'cancelled'
+    
+  }
+
+
+  //todo list functionality
+
+  const addItem = (form)=>{
+    console.log(form)
+    setAppointments((prevData) => {
+        const newId = prevData.reduce((maxId, item) => Math.max(maxId, item.id), 0) + 1;
+    const newAppointment  =  {
+      id: newId,
+      initials: getInitials(form.patientName),
+      patientName: form.patientName,
+      date: form.date,
+      status: form.status,
+      doctor: form.doctor   ,
+      doctorId: form.doctorId,
+      doctorImgUrl: form.doctorImgUrl,
+      actions: ["Schedule", "Cancel", "Remove"],
+
+    };
+    return[
+        ...prevData,
+        newAppointment
+    ]
+    })
+
+    toast.success('Dynamically added appointment has been added')
+  }
   return (
     <div className="dashboard-container">
       <Header />
@@ -129,7 +224,7 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-
+<div className="appointments-table-wrapper">
         <div className="appointments-table">
           <table className="table-overflow">
             <thead>
@@ -143,7 +238,7 @@ const Dashboard = () => {
             </thead>
 
             <tbody>
-              {appointments.map((appointment) => (
+              {appointments.map((appointment,index) => (
                 <tr className="grid-columns-5" key={appointment.id}>
                   <td className="patient">
                     <div className="flex flex-row gap-2 items-center patient-wrapper">
@@ -159,13 +254,15 @@ const Dashboard = () => {
                   <td className="name"> {appointment.date}</td>
                   <td className="status">
                     <div
-                      className={`${statusMap[appointment.status.toLowerCase()]} status-pill flex gap-2 flex-row items-center justify-center`}
+                      className={`${statusMap[appointment.status.toLowerCase()]} status-pill`}
                     >
+                    <div className="flex-container flex flex-row items-center gap-2">
                       <img
                         src={`src/assets/${appointment.status.toLowerCase()}Icon.png`}
                         alt="icon"
                       />
                       <p>{appointment.status}</p>
+                    </div>
                     </div>
                   </td>
                   <td className="doctor">
@@ -186,7 +283,9 @@ const Dashboard = () => {
                   <td className="flex gap-4 flex-row">
                     {" "}
                     {appointment.actions.map((action) => (
-                      <div className={`${action}-btn action-btn`} key={action}>
+                      <div
+                      onClick={() => commitAction(action, index)} 
+                      className={`${action}-btn action-btn`} key={action}>
                         {action}
                       </div>
                     ))}
@@ -195,16 +294,48 @@ const Dashboard = () => {
               ))}
             </tbody>
           </table>
-        <div className="pagination flex items-center justify-between">
-            <button>
-                <img src="src/assets/leftIcon.png" alt="<=" />
-            </button>
-            <button>
-                <img src="src/assets/rightIcon.png" alt="=>" />
-            </button>
-        </div>
+     
 
-        <ScheduleAppointmentModal/>
+        {
+            scheduleIsOpen && (
+        <ScheduleAppointmentModal
+        closeModalFunc={closeScheduleModal}
+        passedDownSelection={appointmentDetails}
+        />
+            )}
+        {
+            cancelIsOpen && (
+        <CancelAppointmentModal
+        closeModalFunc={closeCancelModal}
+        selectedAppointment={appointmentDetails}
+        cancelAppointmentFunc={cancelAppointment}
+        />
+            )}
+        {
+            todoIsOpen && (
+        <TodoModal
+        closeModalFunc={closeTodoModal}
+        addItemFunc={addItem}
+        />
+            )}
+        
+        </div>
+      </div>
+         <div className="pagination flex items-center justify-between">
+            <button>
+                {/* <img src="src/assets/leftIcon.png" alt="<=" /> */}
+<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.750163 4.08333L3.52794 0.75M0.750163 4.08333L3.52794 7.41667M0.750163 4.08333L9.0835 4.08333" stroke="#24AE7C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+            </button>
+    <button onClick={() => setTodoIsOpen(true)}>Add to List</button>
+            <button>
+                {/* <img src="src/assets/rightIcon.png" alt="=>" /> */}
+                <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.08333 4.08333L6.30556 0.75M9.08333 4.08333L6.30556 7.41667M9.08333 4.08333L0.75 4.08333" stroke="#24AE7C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            </button>
         </div>
       </div>
     </div>

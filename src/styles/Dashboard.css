@@ -51,20 +51,22 @@
   font-size: 32px;
   line-height: 40px;
 }
+.appointments-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
 .appointments-table {
-  width: 100%;
+  min-width: 900px;
 border: 1px solid #1A1D21;
-  border-radius: 25px;
+  border-radius: 15px;
+  overflow: hidden;
 }
-.table-overflow thead tr{
-    border-radius: 25px;
-}
+
 .table-overflow {
   width: 100%;
-  overflow-x: auto;
-  /* Enable horizontal scrolling */
-  display: block;
-  /* Ensure the table can scroll */
+table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 .table-overflow thead tr,
 .table-overflow tbody {
@@ -149,6 +151,7 @@ tr:nth-child(even) {
   line-height: 20px;
 }
 .table-overflow .status-pill {
+    display: inline-block;
   border-radius: 16px;
   padding-top: 2px;
   padding-right: 8px;
@@ -191,6 +194,9 @@ tr:nth-child(even) {
 .Cancel-btn {
   color: #fbecec;
 }
+.Remove-btn {
+  color: #F37877;
+}
 .initials-wrapper {
   width: 32px;
   height: 32px;
@@ -221,6 +227,10 @@ tr:nth-child(even) {
         padding: 8px;
         border: 1px solid #1A1D21;
         background-color: #1C2023;
+        color: #24AE7C;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
 }
 .pagination button img{
         height: 15px;

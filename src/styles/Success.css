@@ -1,0 +1,47 @@
+@import url("../styles/roots.css");
+
+.main {
+    margin-top: 2em;
+}
+.main .message img{
+    display: block;
+    width: 75px;
+}
+.main .message{
+    margin-top: 161px;
+}
+.main .message h1{
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 36px;
+        line-height: 44px;
+}
+.main .message h1 .highlighted{
+        color:#4AC97E;
+}
+.main .message p{
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: 0.15px;
+        color:#ABB8C4;
+}
+.main .appointment-details-container{
+    margin-top: 44px;
+    border-top: 1px solid #363A3D99;
+    border-bottom: 1px solid #363A3D99;
+    padding: 48px 69px ;
+    font-family: Plus Jakarta Sans;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 24px;
+        line-height: 36px;
+        color: #ABB8C4;
+}
+.main .appointment-details-container{
+    margin-top: 44px;
+    border-top: 1px solid #363A3D99;
+    border-bottom: 1px solid #363A3D99;
+    padding: 48px 69px ;
+}

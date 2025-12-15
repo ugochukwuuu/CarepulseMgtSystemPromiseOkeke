@@ -1,15 +1,9 @@
 import '../styles/scheduleAppointment.css'
 import whiteCancelIcon from '../assets/whiteCancelIcon.png'
-import AlexRamirez from "../assets/AlexRamirez.png";
-import JasmineLee from "../assets/JasmineLee.png";
-import HardikSharma from "../assets/HardikSharma.png";
-import AlyanaCruz from "../assets/AlyanaCruz.png";
 import DoctorSelect from './doctorsSelect';
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
 
-const ScheduleAppointmentModal = ({isOpen, passedDownSelection, closeModalFunc})=>{
-      const navigate = useNavigate();
+const TodoModal = ({closeModalFunc, addItemFunc})=>{
 
     const closeModal =()=>{
         console.log('hola')
@@ -31,28 +25,24 @@ const ScheduleAppointmentModal = ({isOpen, passedDownSelection, closeModalFunc})
   { id: 5, name: 'Dr. Michael May', imgUrl: null }, 
 ];
 
-const {doctor, doctorId, doctorImgUrl } = passedDownSelection
-const [selectedDoctor, setSelectedDoctor] = useState(ALL_DOCTORS.filter(doc => doc.id === doctorId)[0] || ALL_DOCTORS[0]);
+const [selectedDoctor, setSelectedDoctor] = useState(ALL_DOCTORS[0]);
 
 const handleDoctorSelect = (doctor) => {
     console.log('doctor is', doctor)
     setSelectedDoctor(doctor);
   };
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
-  // Example hardcoded selected doctor object for structure
-  const currentSelection = {
-    id: 1,
-    name: 'Dr. Alex Ramirez',
-    imgUrl: AlexRamirez,
-  };
 
   const [formData, setFormData] = useState({
-    doctor: selectedDoctor.name,
-    reason: "",
-    date: "",
-    img:selectedDoctor.imgUrl,
+    id: null,
+    patientName:"",
+    initials: "",
+      date: "",
+      status:"",
+      doctor: selectedDoctor.name,
+      doctorId: selectedDoctor.id,
+    doctorImgUrl:selectedDoctor.imgUrl,
   });
 
     const handleChange = (e) => {
@@ -65,11 +55,10 @@ const handleDoctorSelect = (doctor) => {
 
   const [error, setError] = useState("");
 
-    const validateForm = (doctor, reason, date) => {
-    if (!doctor || !doctor.trim()) return "Doctor should be chosen";
-    if (!reason || !reason.trim()) return "reason is required";
-
-    if (!date || !date.trim()) return "Date of appointment is required";
+    const validateForm = (patientName, status, date) => {
+    if (!patientName || !patientName.trim()) return "Patient Name should be chosen";
+    if (!status || !status.trim()) return "Status is required";
+    if (!date || !date.trim()) return "Date is required";
 
     return null;
   };
@@ -77,18 +66,15 @@ const handleDoctorSelect = (doctor) => {
     const handleSubmit = (e) => {
     e.preventDefault();
     const validationError = validateForm(
-      formData.doctor,
-      formData.reason,
+      formData.patientName,
+      formData.status,
       formData.date,
     );
     setError(validationError || "");
     if (!validationError) {
       console.log("Form submitted:", formData);
-      navigate("/success",{
-        state:{
-            appointment: formData
-        }
-      });
+      closeModalFunc()
+        addItemFunc(formData)
     } else {
         console.log("Form submitted:", formData);
       console.log("validation erro:", validationError);
@@ -115,9 +101,9 @@ const handleDoctorSelect = (doctor) => {
       <div className="texts">
 
         <h3 className="">
-          Schedule Appointment
+           Add items to the list
         </h3>
-        <p>Please fill in the following details to schedule</p>
+        <p>Please fill in the following details to add</p>
       </div>
         <button onClick={closeModal} className="text-gray-400 hover:text-white">
           <img className='img' src={whiteCancelIcon} alt="" />
@@ -126,29 +112,48 @@ const handleDoctorSelect = (doctor) => {
 
          <form onSubmit={handleSubmit}>
 
+            <label className="label " htmlFor="patientName">
+              Patient's Name
+              <div className="input-container">
+                <input
+                  value={formData.patientName}
+                  onChange={handleChange}
+                  type="text"
+                  name="patientName"
+                  id="patientName"
+                  required
+                />
+              </div>
+            </label>
+
+            <label className="label " htmlFor="status">
+              Status
+              <div className="input-container">
+                <select
+                 value={formData.status}
+                  onChange={handleChange}
+                 name="status" id="">
+                    <option value="scheduled">Scheduled</option>
+                    <option value="pending">Pending</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+            </label>
+
             <DoctorSelect
         doctors={ALL_DOCTORS}
         selectedDoctor={selectedDoctor}
         onSelect={handleDoctorSelect}
+        withImg={false} // i just don't like how all but this input has an icon, call it pedantic but i like uniformity
+
       />
 
-            <label className="label " htmlFor="reason">
-              Reason for appointment
-              <div className="input-container">
-                <textarea   value={formData.reason}
-                  onChange={handleChange}
-                  placeholder='ex: Annual montly check-up'
-                  type="text"
-                  name="reason"
-                  id="reason"
-                  required></textarea>
-              </div>
-            </label>
+ 
+
 
             <label className="label " htmlFor="date">
-              Expected Appointment date
+              Date
               <div className="input-container">
-                <img className='img' src="src/assets/dateIcon.png" alt="date" />
                 <input
                   value={formData.date}
                   onChange={handleChange}
@@ -167,7 +172,7 @@ const handleDoctorSelect = (doctor) => {
         
         className="w-full submit-btn hover:bg-[#16a085]"
       >
-        Schedule appointment
+        Add Item
       </button>
    
           </form>
@@ -177,4 +182,4 @@ const handleDoctorSelect = (doctor) => {
     )
 }
 
-export default ScheduleAppointmentModal
+export default TodoModal

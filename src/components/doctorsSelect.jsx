@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Destructure the required props: doctors, selectedDoctor, and onSelect
-function DoctorSelect({ doctors, selectedDoctor, onSelect }) {
+function DoctorSelect({ doctors, selectedDoctor, onSelect,withImg }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Function to handle clicking an option
@@ -23,7 +23,11 @@ function DoctorSelect({ doctors, selectedDoctor, onSelect }) {
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
         <div className="flex items-center gap-2">
+        {
+            withImg && (
                      <img className='img' src="src/assets/searchIcon.png" alt="full name" />
+            )
+        }
 
           
           <div className="flex items-center gap-2 selected-doctor-container">
