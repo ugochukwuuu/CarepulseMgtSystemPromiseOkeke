@@ -16,10 +16,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      <Toaster
-        position="top-right" 
-        reverseOrder={false}
-      />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }

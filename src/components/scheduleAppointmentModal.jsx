@@ -44,7 +44,6 @@ const ScheduleAppointmentModal = ({
     setSelectedDoctor(doctor);
   };
 
-
   const [formData, setFormData] = useState({
     doctor: selectedDoctor.name,
     reason: "",
@@ -146,7 +145,7 @@ const ScheduleAppointmentModal = ({
               <input
                 value={formData.date}
                 onChange={handleChange}
-                type="date"
+                type="datetime-local"
                 name="date"
                 id="date"
                 required

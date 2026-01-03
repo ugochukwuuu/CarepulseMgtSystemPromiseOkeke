@@ -63,9 +63,7 @@ const CancelAppointmentModal = ({
             </div>
           </label>
 
-          <button
-            className="w-full  cancel-btn hover:bg-[#cb1717]"
-          >
+          <button className="w-full  cancel-btn hover:bg-[#cb1717]">
             Cancel appointment
           </button>
         </form>

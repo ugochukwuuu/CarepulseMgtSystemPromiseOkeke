@@ -1,6 +1,7 @@
 import Header from "../components/header";
 import ScheduleAppointmentModal from "../components/scheduleAppointmentModal";
 import CancelAppointmentModal from "../components/cancelAppointmentModal";
+import getInitials from "../composables/getInitials";
 import TodoModal from "../components/TodoModal";
 import "../styles/Dashboard.css";
 import toast from "react-hot-toast";
@@ -117,16 +118,6 @@ const Dashboard = () => {
     pending: "pending",
     cancelled: "cancelled",
   };
-  const getInitials = (name) => {
-    const initials = name
-      .split(" ")
-      .filter((word) => word !== "Dr." && word !== "Dr")
-      .map((word) => word[0])
-      .join("")
-      .toUpperCase();
-
-    return initials;
-  };
 
   const randomizeBackgroundColor = () => {
     const randomColors = ["#B6F09C", "#B6F09C", "#D59CF0"];
@@ -199,6 +190,16 @@ const Dashboard = () => {
 
     toast.success("Dynamically added appointment has been added");
   };
+
+  // Get current page items
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(appointments.length / itemsPerPage);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPageData = appointments.slice(startIndex, endIndex);
+
   return (
     <div className="dashboard-container">
       <Header />
@@ -232,7 +233,7 @@ const Dashboard = () => {
               </thead>
 
               <tbody>
-                {appointments.map((appointment, index) => (
+                {currentPageData.map((appointment, index) => (
                   <tr className="grid-columns-5" key={appointment.id}>
                     <td className="patient">
                       <div className="flex flex-row gap-2 items-center patient-wrapper">
@@ -315,7 +316,11 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="pagination flex items-center justify-between">
-          <button>
+          <button
+            className="previous-btn"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
             {/* <img src="src/assets/leftIcon.png" alt="<=" /> */}
             <svg
               width="10"
@@ -334,7 +339,13 @@ const Dashboard = () => {
             </svg>
           </button>
           <button onClick={() => setTodoIsOpen(true)}>Add to List</button>
-          <button>
+          <button
+            className="next-btn"
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+          >
             {/* <img src="src/assets/rightIcon.png" alt="=>" /> */}
             <svg
               width="10"

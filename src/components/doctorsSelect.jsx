@@ -4,7 +4,7 @@ function DoctorSelect({ doctors, selectedDoctor, onSelect, withImg }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleOptionClick = (doctor) => {
-    onSelect(doctor); 
+    onSelect(doctor);
     setIsDropdownOpen(false);
   };
 
