@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import getInitials from "../composables/getInitials";
 
 function DoctorSelect({ doctors, selectedDoctor, onSelect, withImg }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -28,11 +29,18 @@ function DoctorSelect({ doctors, selectedDoctor, onSelect, withImg }) {
           )}
 
           <div className="flex items-center gap-2 selected-doctor-container">
-            <img
-              src={selectedDoctor.imgUrl}
-              alt={selectedDoctor.name}
-              className="w-7 h-7 rounded-full object-cover"
-            />
+    
+
+              {selectedDoctor.imgUrl ? (
+            <div className="avatar-wrapper doctor-image-container">
+              <img src={selectedDoctor.imgUrl} alt="img" />
+            </div>
+          ) : (
+            <div className="flex items-center justify-center avatar-wrapper initials-wrapper">
+              {getInitials(selectedDoctor.name)[0]}
+                   </div>
+          )}
+
             {selectedDoctor.name}
           </div>
         </div>
@@ -66,11 +74,17 @@ function DoctorSelect({ doctors, selectedDoctor, onSelect, withImg }) {
                           ${doctor.id === selectedDoctor.id ? "bg-gray-700 text-green-400" : "hover:bg-gray-700 text-white"}`}
               onClick={() => handleOptionClick(doctor)}
             >
-              <img
-                src={doctor.imgUrl}
-                alt={doctor.name}
-                className="w-8 h-8 rounded-full object-cover"
-              />
+       
+
+                     {doctor.imgUrl ? (
+            <div className="avatar-wrapper doctor-image-container">
+              <img src={doctor.imgUrl} alt="img" />
+            </div>
+          ) : (
+            <div className="flex items-center justify-center avatar-wrapper initials-wrapper">
+              {getInitials(doctor.name)[0]}
+                   </div>
+          )}
               {doctor.name}
             </div>
           ))}

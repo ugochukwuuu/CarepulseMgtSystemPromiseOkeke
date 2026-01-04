@@ -9,6 +9,13 @@ import AlexRamirez from "../assets/AlexRamirez.png";
 import JasmineLee from "../assets/JasmineLee.png";
 import HardikSharma from "../assets/HardikSharma.png";
 import AlyanaCruz from "../assets/AlyanaCruz.png";
+import calendarIcon from "../assets/calendarIcon.png"
+import hourGlassIcon from "../assets/hourGlassIcon.png"
+import dangerIcon from "../assets/cancellIcon.png"
+import pendingIcon from "../assets/pendingIcon.png"
+import scheduledIcon from "../assets/scheduledIcon.png"
+import cancelledIcon from "../assets/cancelledIcon.png"
+
 import { useState } from "react";
 const Dashboard = () => {
   const [appointments, setAppointments] = useState([
@@ -95,21 +102,21 @@ const Dashboard = () => {
       quantity: getQuantity("scheduled"),
       //   quantity: 94,
       text: "Total number of scheduled appointments",
-      imgSrc: "src/assets/calendarIcon.png",
+      imgSrc: calendarIcon,
     },
     {
       category: "pending",
       quantity: getQuantity("pending"),
       //   quantity: 32,
       text: "Total number of pending appointments",
-      imgSrc: "src/assets/hourGlassIcon.png",
+      imgSrc: hourGlassIcon,
     },
     {
       category: "cancelled",
       //   quantity: 56,
       quantity: getQuantity("cancelled"),
       text: "Total number of cancelled appointments",
-      imgSrc: "src/assets/cancellIcon.png",
+      imgSrc: dangerIcon,
     },
   ];
 
@@ -119,6 +126,11 @@ const Dashboard = () => {
     cancelled: "cancelled",
   };
 
+  const statusIcon = {
+    scheduled: scheduledIcon,
+    pending: pendingIcon,
+    cancelled: cancelledIcon,
+  }
   const randomizeBackgroundColor = () => {
     const randomColors = ["#B6F09C", "#B6F09C", "#D59CF0"];
     return randomColors[Math.floor(Math.random() * randomColors.length)];
@@ -255,7 +267,7 @@ const Dashboard = () => {
                       >
                         <div className="flex-container flex flex-row items-center gap-2">
                           <img
-                            src={`src/assets/${appointment.status.toLowerCase()}Icon.png`}
+                            src={statusIcon[appointment.status.toLowerCase()]}
                             alt="icon"
                           />
                           <p>{appointment.status}</p>

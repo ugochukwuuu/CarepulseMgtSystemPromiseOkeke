@@ -1,5 +1,6 @@
 import "../styles/scheduleAppointment.css";
 import whiteCancelIcon from "../assets/whiteCancelIcon.png";
+import dateIcon from "../assets/dateIcon.png";
 import AlexRamirez from "../assets/AlexRamirez.png";
 import JasmineLee from "../assets/JasmineLee.png";
 import HardikSharma from "../assets/HardikSharma.png";
@@ -27,10 +28,10 @@ const ScheduleAppointmentModal = ({
   };
 
   const ALL_DOCTORS = [
-    { id: 1, name: "Dr. Alex Ramirez", imgUrl: "src/assets/AlexRamirez.png" },
-    { id: 2, name: "Dr. Hardik Sharma", imgUrl: "src/assets/HardikSharma.png" },
-    { id: 3, name: "Dr. Jasmine Lee", imgUrl: "src/assets/JasmineLee.png" },
-    { id: 4, name: "Dr. Alyana Cruz", imgUrl: "src/assets/AlyanaCruz.png" },
+    { id: 1, name: "Dr. Alex Ramirez", imgUrl: AlexRamirez },
+    { id: 2, name: "Dr. Hardik Sharma", imgUrl: HardikSharma },
+    { id: 3, name: "Dr. Jasmine Lee", imgUrl: JasmineLee },
+    { id: 4, name: "Dr. Alyana Cruz", imgUrl: AlyanaCruz },
     { id: 5, name: "Dr. Michael May", imgUrl: null },
   ];
 
@@ -141,7 +142,7 @@ const ScheduleAppointmentModal = ({
           <label className="label " htmlFor="date">
             Expected Appointment date
             <div className="input-container">
-              <img className="img" src="src/assets/dateIcon.png" alt="date" />
+              <img className="img" src={dateIcon} alt="date" />
               <input
                 value={formData.date}
                 onChange={handleChange}

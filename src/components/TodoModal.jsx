@@ -1,5 +1,9 @@
 import "../styles/scheduleAppointment.css";
 import whiteCancelIcon from "../assets/whiteCancelIcon.png";
+import AlexRamirez from "../assets/AlexRamirez.png";
+import JasmineLee from "../assets/JasmineLee.png";
+import HardikSharma from "../assets/HardikSharma.png";
+import AlyanaCruz from "../assets/AlyanaCruz.png";
 import DoctorSelect from "./doctorsSelect";
 import { useState } from "react";
 
@@ -16,10 +20,10 @@ const TodoModal = ({ closeModalFunc, addItemFunc }) => {
   };
 
   const ALL_DOCTORS = [
-    { id: 1, name: "Dr. Alex Ramirez", imgUrl: "src/assets/AlexRamirez.png" },
-    { id: 2, name: "Dr. Hardik Sharma", imgUrl: "src/assets/HardikSharma.png" },
-    { id: 3, name: "Dr. Jasmine Lee", imgUrl: "src/assets/JasmineLee.png" },
-    { id: 4, name: "Dr. Alyana Cruz", imgUrl: "src/assets/AlyanaCruz.png" },
+    { id: 1, name: "Dr. Alex Ramirez", imgUrl: AlexRamirez },
+    { id: 2, name: "Dr. Hardik Sharma", imgUrl: HardikSharma },
+    { id: 3, name: "Dr. Jasmine Lee", imgUrl: JasmineLee },
+    { id: 4, name: "Dr. Alyana Cruz", imgUrl: AlyanaCruz },
     { id: 5, name: "Dr. Michael May", imgUrl: null },
   ];
 

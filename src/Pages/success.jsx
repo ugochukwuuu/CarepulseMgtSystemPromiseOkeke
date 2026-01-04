@@ -2,6 +2,7 @@ import LogoText from "../components/logo";
 import getInitials from "../composables/getInitials";
 import "../styles/Success.css";
 import successCheckmarkIcon from "../assets/successCheckmarkIcon.png";
+import dateIcon from "../assets/dateIcon.png";
 import AlexRamirez from "../assets/AlexRamirez.png";
 import { useLocation } from "react-router-dom";
 
@@ -73,7 +74,7 @@ const Success = () => {
         </div>
 
         <h2 className="flex flex-row items-center gap-3">
-          <img className="img" src="src/assets/dateIcon.png" alt="date" />
+          <img className="img" src={dateIcon} alt="date" />
           {formatDateTime(appointment.date)}
         </h2>
       </div>

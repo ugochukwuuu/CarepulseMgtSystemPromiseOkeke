@@ -2,6 +2,9 @@ import "../styles/LoginForm.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LogoText from "../components/logo";
+import nameIcon from "../assets/nameIcon.png"
+import emailIcon from "../assets/emailIcon.png"
+import phoneIcon from "../assets/phoneIcon.png"
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -60,7 +63,7 @@ const LoginPage = () => {
               <div className="input-container rainbow-input">
                 <img
                   className="img"
-                  src="src/assets/nameIcon.png"
+                  src={nameIcon}
                   alt="full name"
                 />
                 <input
@@ -78,7 +81,7 @@ const LoginPage = () => {
               <div className="input-container">
                 <img
                   className="img"
-                  src="src/assets/emailIcon.png"
+                  src={emailIcon}
                   alt="email"
                 />
                 <input
@@ -97,7 +100,7 @@ const LoginPage = () => {
               <div className="input-container">
                 <img
                   className="img"
-                  src="src/assets/phoneIcon.png"
+                  src={phoneIcon}
                   alt="Phone Number"
                 />
                 <input
